@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- page heading -->
+    <div class="row justify-content-md-center">
+        <div class="col-sm-12 text-center">
+            <h1>{{ user.username | capitalize }}' s Profile Page</h1>
+        </div>
+    </div> <br> <!-- end of page heading -->
+
+    <!-- profile content -->
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <img src="{{ user.avatar(128) }}" class="card-img-top" alt="profile-avatar">
+                <div class="card-body">
+                    <h5 class="card-title">Users Info</h5>
+                    <p class="card-text">
+                        {% if user.about_me %} <span class="bold">About Me: </span>{{ user.about_me }}{% endif %}
+                    </p>
+                <p class="card-text">
+                        {% if user.last_seen %}
+                            <span class="bold">Last Seen: </span>{{ moment(user.last_seen).format('LLL') }}
+                        {% endif %}
+                    </p>
+                    {% if user == current_user %}
+                        <a href="{{ url_for('main.edit_profile') }}" class="btn btn-primary">Edit Profile</a>
+                    {% elif not current_user.is_following(user) %}
+                        <a href="{{ url_for('follow', username=user.username) }}" class="btn btn-primary">Follow</a>
+                    {% else %}
+                        <a href="{{ url_for('unfollow', username=user.username) }}" class="btn btn-primary">Unfollow</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            {% include 'partials/posts.html' %}
+        </div>
+    </div>
+{% endblock %}

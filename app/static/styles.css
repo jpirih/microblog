@@ -1,0 +1,17 @@
+body{
+    padding-bottom: 80px;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.ff-error{
+    font-weight: bold;
+    color: red;
+
+}
+
+.avatar{
+    padding-right: 10px;
+}

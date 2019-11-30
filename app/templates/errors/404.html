@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- page heading -->
+    <div class="row justify-content-md-center">
+        <div class="col-sm-12">
+            <div class="jumbotron">
+                <h1 class="display-4">Page not Found, 404</h1>
+                <p class="lead">This page does not exist. Please check spelling of url adress.</p>
+                <hr class="my-4">
+                <p>Nothing to Show here. This page does not exist. Return back to Homepage.</p>
+                <a class="btn btn-primary btn-lg" href="{{ url_for('index') }}" role="button">Back Home</a>
+            </div>
+        </div>
+    </div> <br> <!--  end of page heading -->
+{% endblock %}

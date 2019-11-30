@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- page heading -->
+    <div class="row justify-content-md-center">
+        <div class="col-sm-12 text-center">
+            <h1>Edit Profile</h1>
+        </div>
+    </div> <br> <!-- end of page heading -->
+
+    <!-- edit form -->
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card-card-body">
+                <form action="" method="post" novalidate>
+                    {{ form.hidden_tag() }}
+                    <!-- username -->
+                    <div class="form-group">
+                        {{ form.username.label(class="control-label") }}
+                        {{ form.username(class="form-control", value=current_user.username) }}
+                        <p>
+                            {% for error in form.username.errors %}
+                                <span class="ff-error">{{ error }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+
+                    <!-- about me -->
+                    <div class="form-group">
+                        {{ form.about_me.label(class="control-label") }}
+                        {{ form.about_me(class="form-control") }}
+                        <p>
+                            {% for error in form.about_me.errors %}
+                                <span class="ff-error">{{ error }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+
+                    <!-- submit -->
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-success") }}
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
